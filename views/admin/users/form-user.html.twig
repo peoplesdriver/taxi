@@ -1,0 +1,61 @@
+
+{% extends '/admin/layout/layout.twig' %}
+
+{% block content %}
+
+<form class="form_add-data"  name="formuser" method="post" {% if user %} action="{{ path_for('user.updateUser', {'id': user.uid}) }}" {% else %} action="{{ path_for('user.createUser') }}" {% endif %}>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--4-col padding-top-bottom0">
+            <div class="mdl-grid padding-top-bottom0 b-form cars-add-form">
+                <div class="mdl-cell">
+                    <div  class="mdl-textfield mdl-js-textfield">
+                        <span>Ник</span>
+                        <input class="mdl-textfield__input"  type="text" name="user[ulogin]" value="{{ user.ulogin }}">
+                    </div>
+                    <div  class="mdl-textfield mdl-js-textfield">
+                        <span> Пароль/Кеш пароля</span>
+                        <input class="mdl-textfield__input" type="text" name="user[upasswd]" value="{{ user.upasswd }}">
+                    </div>
+                    <div  class="mdl-textfield mdl-js-textfield">
+                        <span>Полное имя</span>
+                        <input  class="mdl-textfield__input" type="text" name="user[ufullname]" value="{{ user.ufullname }}">
+                    </div>
+                    <div  class="mdl-textfield mdl-js-textfield">
+                        <span>Телефон</span>
+                        <input class="mdl-textfield__input" type="text" name="user[uphone]" value="{{ user.uphone }}">
+                    </div>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" >Отправить</button>
+                    {% if user %}
+                        <a  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{path_for('user.deleteUser', {'id': user.uid}) }}" style="margin-top: 15px;">Удалить</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col padding-top-bottom0">
+            <div class="mdl-grid padding-top-bottom0 b-form">
+                <div class="mdl-cell">
+                    <div  class="mdl-textfield mdl-js-textfield">
+                        <span>e-mail</span>
+                        <input class="mdl-textfield__input" type="text" name="user[umail]" value="{{ user.umail }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Роль</span>
+                        <input class="mdl-textfield__input" type="text" name="user[urole]" value="{{ user.urole }}">
+                    </div>
+                    <div  class="mdl-textfield mdl-js-textfield">
+                        <span>Регион</span>
+                        <select class="mdl-textfield__input" id="octane" multiple name="user[sec_regs][]">
+                            {% for reg in user.sec_regs %}
+                                <option disabled selected value="{{ reg.sec_regs }}">{% for item in regions %} {% if (item.sec_reg_id == reg) %} {{ item.sec_reg_name }} {% endif %} {% endfor %}</option>
+                            {% endfor %}
+                            {% for item in regions %}
+                                <option value="{{ item.sec_reg_id }}">{{ item.sec_reg_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

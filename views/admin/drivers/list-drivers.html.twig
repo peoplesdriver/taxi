@@ -1,0 +1,100 @@
+{% extends '/admin/layout/layout.twig' %}
+
+{% block content %}
+<table class="mdl-data-table mdl-table-bordered mdl-js-data-table mdl-shadow--2dp list-cars-table">
+    <thead>
+        <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Пол</th>
+            <th>Курящий</th>
+            <th>Филиал</th>
+            <th>Дата обучения</th>
+            <th>Надежность водителя</th>
+            <th>Согласен перевозить животных</th>
+            <th>Выдает чеки</th>
+            <th>ИП</th>
+            <th>Таксопарк</th>
+            <th>Серия паспорта</th>
+            <th>Номер паспорта</th>
+            <th>Дата выдачи паспорта</th>
+            <th>Кем выдан паспрт</th>
+            <th>Прописка</th>
+            <th>Номер телефона</th>
+            <th>День рождения</th>
+            <th>Куратор</th>
+            <th>Тип прав</th>
+            <th>Номер ВУ</th>
+            <th>Дата выдачи прав</th>
+            <th>Безлимитный тариф</th>
+            <th>Комментарий</th>
+            <th>Регион</th>
+            <th>Кредит водителю</th>
+            <th>Баланс</th>
+            <th>Сумма включения</th>
+            <th>Сумма предупреждения</th>
+            <th>Сумма выключения</th>
+            <th>Корпоративный баланс</th>
+            <th>Тип радиуса</th>
+            <th>Радиус (метры)</th>
+            <th>Работает с доставкой</th>
+            <th>Макс. сумма заказов до сдачи</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in drivers %}
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><a href="{{ path_for('driver.showAdminDriver', {'id': item.did}) }}">{{ item.dlastname }}</a></td>
+            <td>{{ item.dfirstname }}</td>
+            <td>{{ item.dmidlename }}</td>
+            <td>{{ item.dpol }}</td>
+            <td>{{ item.dsmoke }}</td>
+            <td>{{ item.filial.fil_name }}</td>
+            <td>{{ item.dlearningdate }}</td>
+            <td>{{ item.dproveren }}</td>
+            <td>{{ item.danimals }}</td>
+            <td>{{ item.dkvitok }}</td>
+            <td>{{ item.dindpredpr }}</td>
+            <td>{{ item.dtaxopark }}</td>
+            <td>{{ item.dpaspseria }}</td>
+            <td>{{ item.dpaspnomer }}</td>
+            <td>{{ item.dpaspdata }}</td>
+            <td>{{ item.dpaspkem }}</td>
+            <td>{{ item.dpaspaddress }}</td>
+            <td>{{ item.dphone }}</td>
+            <td>{{ item.dbirthday }}</td>
+            <td>{{ item.kurator.curname }}</td>
+            <td>{{ item.dpravatype }}</td>
+            <td>{{ item.dpravanum }}</td>
+            <td>{{ item.dpravadate }}</td>
+            <td>{{ item.dbezlimit }}</td>
+            <td>{{ item.dcomment }}</td>
+            <td>{{ item.sec_reg }}</td>
+            <td>{{ item.dcredit }}</td>
+            <td>{{ item.dbalance }}</td>
+            <td>{{ item.dsum_on }}</td>
+            <td>{{ item.dsum_warn }}</td>
+            <td>{{ item.dsum_off }}</td>
+            <td>{{ item.dcorp_balance }}</td>
+            <td>{% if item.dradius_type == 1 %} по дорогам {% else %} по прямой {% endif %}  </td>
+            <td>{{ item.dradius_len }}</td>
+            <td>{{ item.ddostavka }}</td>
+            <td>{{ item.ddostavka_maxsum }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="paginate-box">
+    <ul>
+    {% for item in 1..drivers.lastPage %}
+        <li>
+            <a href="{{ path_for('driver.showAdminDrivers') }}?page={{ item }}">{{ item }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+    <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{ path_for('driver.addAdminDriver') }}">
+        Добавить
+    </a>
+{% endblock %}

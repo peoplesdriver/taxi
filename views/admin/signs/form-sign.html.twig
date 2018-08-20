@@ -1,0 +1,61 @@
+{% extends '/admin/layout/layout.twig' %}
+{% block content %}
+<form method="post" class="form_add-data" name="formsign" {% if sign %} action="{{ path_for('sign.updateSign', {'id': sign.csign}) }}" {% else %} action="{{ path_for('sign.createSign') }}"  {% endif %} style="margin-bottom:3%; margin-left: 3%;">
+    <div class="mdl-textfield mdl-js-textfield">
+        <span>Позывной</span>
+        <input class="mdl-textfield__input" type="text" id="sample1" name="sign[csign]"  value="{{ sign.csign }}">
+    </div>
+    <div class="mdl-textfield mdl-js-textfield">
+        <span>Imei</span>
+        <input class="mdl-textfield__input" type="text" id="sample1" name="sign[cimei]"  value="{{ sign.cimei }}">
+    </div>
+
+
+    <div class="mdl-textfield mdl-js-textfield">
+        <span>Ид водителя</span>
+
+
+
+        <select class="mdl-textfield__input" id="octane" name="sign[cdriver]">
+            <option disabled selected value="{{ sign.driver.did }}">{{ sign.driver.dlastname }} {{ sign.driver.dfirstname }} {{ sign.driver.dmidlename }}</option>
+            {% for item in drivers %}
+                <option value="{{ item.did }}">{{ item.dlastname }} {{ item.dfirstname }} {{ item.dmidlename }}</option>
+            {% endfor %}
+        </select>
+
+
+    </div>
+    <div class="mdl-textfield mdl-js-textfield">
+        <span>Ид автомобиля</span>
+
+        <select class="mdl-textfield__input" id="octane" name="sign[ccar]">
+            {% if sign.ccar == -1 %}  <option type="number" disabled selected value="-1">Пеший</option>
+            {% elseif  sign.ccar == -2 %} <option type="number" disabled selected value="-2">Велокурьер</option>
+            {% else %}<option disabled selected value="{{ sign.car.car_id }}">{{ sign.car.car_model }} {{ sign.car.car_model_full }} {{ sign.car.car_gn }}</option> {% endif %}
+            <option value="-1"> Пеший </option>
+            <option value="-2"> Велокурьер </option>
+            {% for item in cars %}
+                <option value="{{ item.car.car_id }}">{{ item.car_model }} {{ item.car_model_full }} {{ item.car_gn }}</option>
+            {% endfor %}
+        </select>
+
+    </div>
+    <div class="mdl-textfield mdl-js-textfield">
+        <span>Код активации</span>
+        <input class="mdl-textfield__input" type="text" id="sample1" name="sign[cactivation]" value="{{ sign.cactivation }}">
+    </div>
+    <div class="mdl-textfield mdl-js-textfield">
+        <span>Код региона</span>
+        <select class="mdl-textfield__input" id="octane" name="sign[sec_reg]">
+            <option disabled selected value="{{ sign.region.sec_reg_id }}">{{ sign.region.sec_reg_name }}</option>
+            {% for item in regions %}
+                <option value="{{ item.sec_reg_id }}">{{ item.sec_reg_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" style="margin-right: 2%;">Сохранить</button>
+    {% if sign %}
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{ path_for('sign.deleteSign', {'id': sign.csign}) }}">Удалить</a>
+    {% endif %}
+</form>
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends '/admin/layout/layout.twig' %}
+
+{% block content %}
+    <form method="POST" class="form_add-data" {% if car[0] %} action="{{ path_for('car.updateCar', {'id': car.car_id}) }}" {% else %} action="{{ path_for('car.createCar') }}" {% endif %} name='formcar' style="margin-bottom:3%; margin-left: 3%;" >
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--4-col padding-top-bottom0">
+                <div class="mdl-grid padding-top-bottom0 b-form cars-add-form">
+                    <div class="mdl-cell">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Госномер</span>
+                            <input class="mdl-textfield__input" type="text" id="sample1" name="car[car_gn]" value="{{ car.car_gn }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Цвет</span>
+                            <input class="mdl-textfield__input" type="text" id="sample2" name="car[car_color]" value="{{ car.car_color }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Модель</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="car[car_model]" value="{{ car.car_model }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Уточнение модели</span>
+                            <input class="mdl-textfield__input" type="text" id="sample4" name="car[car_model_full]" value="{{ car.car_model_full }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <span>Год выпуска</span>
+                            <select class="mdl-textfield__input" name="car[car_year_complete]" value="{{ car.car_year_complete }}">
+                                <option disabled selected></option>
+                                {% for i in cur_year..1970 %}
+                                    <option value="{{i}}-01-01">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <label for="checkbox-1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" name="car[car_patriot]" value="true" {% if car.car_patriot %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">отечественный</span>
+                        </label>
+
+                        <label for="checkbox-2" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input" name="car[car_arenda]" value="true" {% if car.car_arenda %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">в аренде</span>
+                        </label>
+
+                        <label for="checkbox-3" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="checkbox-3" class="mdl-checkbox__input" name="car[car_free]" value="true" {% if car.car_free %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">простаивает</span>
+                        </label>
+
+                        <label for="checkbox-4" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="checkbox-4" class="mdl-checkbox__input" name="car[car_license]" value="true" {% if car.car_license %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">есть лицензия</span>
+                        </label>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Окончание лицензии</span>
+                            <input class="mdl-textfield__input" type="date" required id="sample1" name="car[car_license_finale]"  value="{{ car.car_license_finale }}" >
+                        </div>
+
+                        <label for="checkbox-5" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="checkbox-5" class="mdl-checkbox__input" name="car[car_brand]" value="true" {% if car.car_brand %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">брэндирована</span>
+                        </label>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" style="margin-right: 2%; margin-top: 10%;">Сохранить</button>
+                        {% if car %}
+                            <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{ path_for('car.deleteCar', {'id': car.car_id}) }}" style="margin-top: 15px;">Удалить</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col padding-top-bottom0">
+                <div class="mdl-grid padding-top-bottom0 b-form">
+                    <div class="mdl-cell">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Окончание страховки</span>
+                            <input class="mdl-textfield__input" type="date" required  name="car[car_end_strah]" value="{{ car.car_end_strah }}" >
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Окончание техосмотра</span>
+                            <input class="mdl-textfield__input" type="date" required id="sample1" name="car[car_techosmotr_end]" value="{{ car.car_techosmotr_end }}" >
+                        </div>
+
+                        <label for="checkbox-6" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: 300px;">
+                            <input type="checkbox" id="checkbox-6" class="mdl-checkbox__input" name="car[car_box_free]" value="true" {% if car.car_box_free %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">занят багажник?</span>
+                        </label>
+
+                        <label for="checkbox-7" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: 300px;">
+                            <input type="checkbox" id="checkbox-7" class="mdl-checkbox__input" name="car[car_universal]" value="true" {% if car.car_universal %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">машина - универсал?</span>
+                        </label>
+
+                        <label for="checkbox-8" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: 300px;">
+                            <input type="checkbox" id="checkbox-8" class="mdl-checkbox__input" name="car[car_tabl]" value="true" {% if car.car_tabl %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">Табличка для встречи</span>
+                        </label>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Комментарий</span>
+                            <input class="mdl-textfield__input" type="text" name="car[car_comment]" value="{{ car.car_comment }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Комментарий оператора</span>
+                            <input class="mdl-textfield__input" type="text" name="car[car_oper_comment]" value="{{ car.car_oper_comment }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Id региона</span>
+                            <select class="mdl-textfield__input" required name="car[sec_reg]" value="{{ car.sec_reg }}">
+                                <option disabled selected value="{{ car.region.sec_reg_id }}">{{ car.region.sec_reg_name }}</option>
+                                {% for item in regions %}
+                                    <option value="{{ item.sec_reg_id }}">{{ item.sec_reg_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <span>Тип авто</span>
+                            <select class="mdl-textfield__input" name="car[car_type]" value="{{ car.car_type }}" required>
+                                <option disabled selected value="{{ car.cartype.ct_id }}">{{ car.cartype.ct_name }}</option>
+                                {% for item in cartypes %}
+                                    <option value="{{ item.ct_id }}">{{ item.ct_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

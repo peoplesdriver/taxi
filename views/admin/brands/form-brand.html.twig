@@ -1,0 +1,160 @@
+
+{% extends '/admin/layout/layout.twig' %}
+
+{% block content %}
+
+<form class="form_add-data" method="post" {% if brand%} action="{{ path_for('brand.updateBrand', {'id': brand.brand_id}) }}" {% else %} action="{{ path_for('brand.createBrand') }}" {% endif %}>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--4-col padding-top-bottom0">
+            <div class="mdl-grid padding-top-bottom0 b-form cars-add-form">
+                <div class="mdl-cell">
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Бренд-группа</span>
+
+                        <select class="mdl-textfield__input" name="brand[brand_group]">
+                            <option disabled selected value="{{ brand.brandGroup.brcl_id }}">{{ brand.brandGroup.brcl_name }}</option>
+                            {% for item in brandgroups %}
+                                <option value="{{ item.brcl_id }}">{{ item.brcl_name }}</option>
+                            {% endfor %}
+                        </select>
+
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Регион</span>
+
+                        <select class="mdl-textfield__input" name="brand[brand_sec_reg]">
+                            <option disabled selected value="{{ brand.region.sec_reg_id }}">{{ brand.region.sec_reg_name }}</option>
+                            {% for item in regions %}
+                                <option value="{{ item.sec_reg_id }}">{{ item.sec_reg_name }}</option>
+                            {% endfor %}
+                        </select>
+
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Филиал</span>
+
+                        <select class="mdl-textfield__input" name="brand[brand_filial]">
+                            <option disabled selected value="{{ brand.filial.fid }}">{{ brand.filial.fil_name }}</option>
+                            {% for item in filials %}
+                                <option value="{{ item.fid }}">{{ item.fil_name }}</option>
+                            {% endfor %}
+                        </select>
+
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Название</span>
+                        <input  class="mdl-textfield__input" type="text" name="brand[brand_name]" value="{{ brand.brand_name }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Километраж почасового заказа</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_chaaskm]" value="{{ brand.brand_chaaskm }}">
+                    </div>
+                    <div  class="mdl-textfield mdl-js-textfield">
+                        <span>Цена простоя за 1 минуту</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_prostoy_cost]" value="{{ brand.brand_prostoy_cost }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Цена остоновки в пути</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_ostanovka]" value="{{ brand.brand_ostanovka }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Наценка за табличку</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_zatablichku]" value="{{ brand.brand_zatablichku}}">
+                    </div>
+                    <div  class="mdl-textfield mdl-js-textfield">
+                        <span>Наценка за багаж</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_zabagaj]" value="{{ brand.brand_zabagaj }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Наценка за собаку</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_zasobaku]" value="{{ brand.brand_zasobaku }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>наценка за выбор машины</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_zavibor]" value="{{ brand.brand_zavibor }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Множитель за сбербанк онлайн</span>
+                        <input  class="mdl-textfield__input" type="text" name="brand[brand_sberbank]" value="{{ brand.brand_sberbank }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Множитель за оплату картой</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_card]" value="{{ brand.brand_card }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>brand_near_podacha</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_near_podacha]" value="{{ brand.brand_near_podacha }}">
+                    </div>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" style="margin-right: 2%; margin-top: 10%;" type="submit" >Отправить</button>
+                    {% if brand %}
+                        <a  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{ path_for('car.deleteCar', {'id': car.car_id}) }}" style="margin-top: 15px;" href="{{path_for('brand.deleteBrand', {'id': brand.brand_id}) }}">Удалить</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col padding-top-bottom0">
+            <div class="mdl-grid padding-top-bottom0 b-form">
+                <div class="mdl-cell"class="mdl-cell">
+                    <div  class="mdl-textfield mdl-js-textfield">
+                        <span>brand_long_podacha</span>
+                        <input  class="mdl-textfield__input" type="text" name="brand[brand_long_podacha]" value="{{ brand.brand_long_podacha }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>brand_rab_hour</span>
+                        <input  class="mdl-textfield__input" type="text" name="brand[brand_rab_hour]" value="{{ brand.brand_rab_hour }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>brand_rab_level</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_rab_level]" value="{{ brand.brand_rab_level }}">
+                    </div>
+                    <label for="checkbox-1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                        <input class="mdl-checkbox__input" id="checkbox-1" type="checkbox" name="brand[brand_auto_driver]" value="true" {% if brand.brand_auto_driver %} checked {% endif %}>
+                        <span class="mdl-checkbox__label">Автоназначение водителя</span>
+                    </label>
+                    <label for="checkbox-12" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                        <input class="mdl-checkbox__input" id="checkbox-2" type="checkbox" name="brand[brand_auto_predv]" value="true" {% if brand.brand_auto_predv %} checked {% endif %}>
+                        <span class="mdl-checkbox__label">Автоназночение предворительного заказа</span>
+                        </label>
+                    <div  class="mdl-textfield mdl-js-textfield">
+                        <span>Время до предворительного заказа</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_predv_time]" value="{{ brand.brand_predv_time }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Ограничение цены для автораздачи</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_arazd_cost]" value="{{ brand.brand_arazd_cost }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Ограничение расстояния автораздачи</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_auto_length]" value="{{ brand.brand_auto_length }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Минимальная цена</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_lowcost]" value="{{ brand.brand_lowcost }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>brand_lowradius</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_lowradius]" value="{{ brand.brand_lowradius }}">
+                    </div>
+                    <label for="checkbox-3" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                        <input id="checkbox-3" class="mdl-checkbox__input" type="checkbox" name="brand[brand_nepodtv_razd]" value="true" {% if brand.brand_nepodtv_razd %} checked {% endif %}>
+                        <span class="mdl-checkbox__label">brand_nepodtv_razd</span>
+                        </label>
+                    <div  class="mdl-textfield mdl-js-textfield">
+                        <span>brand_nepodtv_count</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_nepodtv_count]" value="{{ brand.brand_nepodtv_count }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Наценка до подъезда</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_porch_delivery]" value="{{ brand.brand_porch_delivery }}">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <span>Наценка до двери</span>
+                        <input class="mdl-textfield__input" type="text" name="brand[brand_door_delivery]" value="{{ brand.brand_door_delivery }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

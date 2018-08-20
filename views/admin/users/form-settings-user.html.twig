@@ -1,0 +1,31 @@
+<form action="{{ path_for('user.settingsUser') }}" method="post">
+    <div>
+        <div>
+            <lable>Изменения пароля</lable>
+        </div>
+        <div>
+            <input type="text" name="oldpassword" placeholder="старый пароль">
+        </div>
+        <div>
+            <input type="text"  name="newpassword1" placeholder="новый пароль">
+        </div>
+        <div>
+            <input type="text" name="newpassword2" placeholder="еще раз новый пароль">
+        </div>
+        <div>
+            <lable>Адрес стартовой страници</lable>
+        </div>
+        <div>
+            <select name="startpage" >
+                <option selected="selected">выберети адрес начальной страници</option>
+                <option value="car.showAdminCars">Автомобили</option>
+                <option value="driver.showAdminDrivers">Водители</option>
+                <option value="sign.showAdminSigns">Позывные</option>
+                <option value="user.showAdminUsers">Пользователи</option>
+            </select>
+        </div>
+        <div>
+            <button>Отправить</button>
+        </div>
+    </div>
+</form>

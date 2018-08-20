@@ -1,0 +1,232 @@
+{% extends '/admin/layout/layout.twig' %}
+
+{% block content %}
+    <form method="POST" class="form_add-data" {% if driver %} action="{{ path_for('driver.updateDriver', {'id': driver.did}) }}" {% else %} action="{{ path_for('driver.createDriver') }}" {% endif %} style="margin-left: 3%;">
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--4-col padding-top-bottom0">
+                <div class="mdl-grid padding-top-bottom0 b-form">
+                    <div class="mdl-cell">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Фамилия</span>
+                            <input class="mdl-textfield__input" type="text" id="sample1" name="driver[dlastname]" value="{{ driver.dlastname }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Имя</span>
+                            <input class="mdl-textfield__input" type="text" id="sample2" name="driver[dfirstname]" value="{{ driver.dfirstname }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Отчество</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dmidlename]" value="{{ driver.dmidlename }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <span>Пол</span>
+                            <select class="mdl-textfield__input" id="octane" name="driver[dpol]">
+                                <option disabled selected value="{{ driver.sex.sex_id }}">{{ driver.sex.sex_name }}</option>
+                                <option value="1">Мужской</option>
+                                <option value="2">Женский</option>
+                            </select>
+                        </div>
+
+                        <label for="checkbox-1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" name="driver[dsmoke]" value="true" {% if driver.dsmoke %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">Курящий?</span>
+                        </label>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <span>Филиал</span>
+                            <select class="mdl-textfield__input" id="octane" name="driver[dfilial]">
+                                <option disabled selected value="{{ driver.filial.fid }}">{{ driver.filial.fil_name }}</option>
+                                {% for filial in filials %}
+                                    <option value="{{ filial.fid }}">{{ filial.fil_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Дата обучения</span>
+                            <input class="mdl-textfield__input" type="date" required id="sample1" name="driver[dlearningdate]" value="{{ driver. dlearningdate}}">
+                        </div>
+
+                        <label for="checkbox-5" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: 300px;">
+                            <input type="checkbox" id="checkbox-5" class="mdl-checkbox__input" name="driver[dproveren]" value="true" {% if driver.dproveren %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">надежный водитель</span>
+                        </label>
+
+                        <label for="checkbox-5" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: 300px;">
+                            <input type="checkbox" id="checkbox-5" class="mdl-checkbox__input" name="driver[danimals]" value="true" {% if driver.danimals %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">перевозка животных</span>
+                        </label>
+
+                        <label for="checkbox-5" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: 300px;">
+                            <input type="checkbox" id="checkbox-5" class="mdl-checkbox__input" name="driver[dkvitok]" value="true" {% if driver.dkvitok %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">выдает чеки</span>
+                        </label>
+
+                        <label for="checkbox-5" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="checkbox-5" class="mdl-checkbox__input" name="driver[dindpredpr]" value="true" {% if driver.dindpredpr %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">ИП</span>
+                        </label>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Таксопарк</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dtaxopark]" value="{{ driver.dtaxopark }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Серия паспорта</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dpaspseria]" value="{{ driver.dpaspseria }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Номер паспорта</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dpaspnomer]" value="{{ driver.dpaspnomer }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Дата выдачи паспорта</span>
+                            <input class="mdl-textfield__input" type="date" required  name="driver[dpaspdata]" value="{{ driver.dpaspdata }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Кем выдан</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dpaspkem]" value="{{ driver.dpaspkem }}">
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Прописка</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dpaspaddress]" value="{{ driver.dpaspaddress }}">
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Номер телефона</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dphone]" value="{{ driver.dphone }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>День рождения</span>
+                            <input class="mdl-textfield__input" type="date" required name="driver[dbirthday]" value="{{ driver.dbirthday }}">
+                        </div>
+
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" style="margin-right: 2%;">Сохранить</button>
+                        {% if driver %}
+                            <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{ path_for('driver.deleteDriver', {'id': driver.did}) }}" style="margin-top: 15px;">Удалить</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--4-col padding-top-bottom0">
+                <div class="mdl-grid padding-top-bottom0 b-form">
+                    <div class="mdl-cell">
+
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Куратор</span>
+
+                            <select class="mdl-textfield__input" id="octane" name="driver[dkurator]">
+                                <option disabled selected value="{{ driver.kurator.curid }}">{{ driver.kurator.curname }}</option>
+                                {% for item in kurators %}
+                                    <option value="{{ item.curid }}">{{ item.curname }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Тип прав</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dpravatype]" value="{{ driver.dpravatype }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Номер ВУ</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dpravanum]" value="{{ driver.dpravanum }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Дата выдачи прав</span>
+                            <input class="mdl-textfield__input" type="date" required name="driver[dpravadate]" value="{{ driver.dpravadate }}">
+                        </div>
+
+                        <label for="checkbox-7" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: 300px;">
+                            <input type="checkbox" id="checkbox-7" class="mdl-checkbox__input" name="driver[dbezlimit]" value="true" {% if driver.dbezlimit %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">Безлимитный тариф</span>
+                        </label>
+
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Комментарий</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dcomment]" value="{{ driver.dcomment }}">
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <span>Регион</span>
+                            <select class="mdl-textfield__input" id="octane" name="driver[sec_reg]">
+                                <option disabled selected value="{{ driver.region.sec_reg_id }}">{{ driver.region.sec_reg_name }}</option>
+                                {% for item in regions %}
+                                    <option value="{{ item.sec_reg_id }}">{{ item.sec_reg_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Кредит водителю</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dcredit]" value="{{ driver.dcredit }}">
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Баланс</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dbalance]" value="{{ driver.dbalance }}">
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Сумма включения</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dsum_on]" value="{{ driver.dsum_on}}">
+                        </div>
+
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Сумма предложения</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dsum_warn]" value="{{ driver.dsum_warn }}">
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Сумма выключения</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dsum_off]" value="{{ driver.dsum_off }}">
+                        </div>
+                        <label for="checkbox-1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" name="driver[dcorp_balance]" value="true" {% if driver.dcorp_balance %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">Корпоративный баланс</span>
+                        </label>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Тип радиуса</span>
+
+                            <select class="mdl-textfield__input" id="octane" name="driver[dradius_type]">
+                                {% if driver.dradius_type %}
+                                    <option disabled selected value="{{ driver.dradius_type }}"> {% if driver.dradius_type == 1 %} по дорогам {% else %} по прямой {% endif %}</option>
+                                {% else %}
+                                    <option value="0"></option>
+                                {% endif %}
+                                <option value="1">по дорогам</option>
+                                <option value="2">по прямой</option>
+                            </select>
+
+                        </div>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Радиус (метры)</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[dradius_len]" value="{{ driver.dradius_len }}">
+                        </div>
+
+                        <label for="checkbox-1" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" style="width: 300px;">
+                            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" name="driver[ddostavka]" value="true" {% if driver.ddostavka %} checked {% endif %}>
+                            <span class="mdl-checkbox__label">Работает с доставкой</span>
+                        </label>
+
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <span>Максимальная сумма заказов до сдачи</span>
+                            <input class="mdl-textfield__input" type="text" id="sample3" name="driver[ddostavka_maxsum]" value="{{ driver.ddostavka_maxsum }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
+
+
+
+{% endblock %}

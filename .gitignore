@@ -1,0 +1,13 @@
+/vendor/
+/files/
+/.idea/
+
+.env.*.php
+.env.php
+.env
+
+dump/
+
+test/taxi/\.idea/taxi\.iml
+
+test/taxi/\.idea/workspace\.xml

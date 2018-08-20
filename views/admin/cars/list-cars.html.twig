@@ -1,0 +1,69 @@
+{% extends '/admin/layout/layout.twig' %}
+
+{% block content %}
+<table class="mdl-data-table mdl-table-bordered mdl-js-data-table mdl-shadow--2dp list-cars-table">
+    <thead>
+    <tr>
+        <th>Госномер</th>
+        <th>Цвет автомобиля</th>
+        <th>Модель автомобля</th>
+        <th>Уточнение модели </th>
+        <th>Год выпуска</th>
+        <th>Отечественный</th>
+        <th>Автомобиль</th>
+        <th>Простаивает</th>
+        <th>Есть лицензия</th>
+        <th>Окончание лицензии</th>
+        <th>Брендирована</th>
+        <th>Окончание страховки</th>
+        <th>Окончание техосмотра</th>
+        <th>Занят багажник</th>
+        <th>Машина универсал</th>
+        <th>Табличка для встречи</th>
+        <th>Комментарий к авто</th>
+        <th>Комментарий оператору</th>
+        <th>ИД региона</th>
+        <th>Тип авто</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in cars %}
+    <tr>
+
+        <td><a href="{{ path_for('car.showAdminCar', {'id': item.car_id}) }}">{{ item.car_gn }}</a></td>
+        <td>{{ item.car_color }}</td>
+        <td>{{ item.car_model }}</td>
+        <td>{{ item.car_model_full }}</td>
+        <td>{{ item.car_year_complete }}</td>
+        <td>{{ item.car_patriot }}</td>
+        <td>{{ item.car_arenda }}</td>
+        <td>{{ item.car_free }}</td>
+        <td>{{ item.car_license }}</td>
+        <td>{{ item.car_license_finale }}</td>
+        <td>{{ item.car_brand }}</td>
+        <td>{{ item.car_end_strah }}</td>
+        <td>{{ item.car_techosmotr_end }}</td>
+        <td>{{ item.car_box_free}}</td>
+        <td>{{ item.car_universal }}</td>
+        <td>{{ item.car_tabl }}</td>
+        <td>{{ item.car_comment }}</td>
+        <td>{{ item.car_oper_comment }}</td>
+        <td>{{ item.region.sec_reg_name }}</td>
+        <td>{{ item.cartype.ct_name }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    <div class="paginate-box">
+        <ul>
+            {% for item in 1..cars.lastPage %}
+                <li>
+                    <a href="{{ path_for('car.showAdminCars') }}?page={{ item }}" style="font-size: 18px;">{{ item }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{ path_for('car.addAdminCar') }}">
+        Добавить
+    </a>
+{% endblock %}

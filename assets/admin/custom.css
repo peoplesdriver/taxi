@@ -1,0 +1,279 @@
+@font-face {
+    font-family: 'Sans';
+    src: url('fonts/clearsans/clearsansbold.woff2') format('woff2'), url('fonts/clearsans/clearsansbold.woff') format('woff'), url('fonts/clearsans/clearsansbold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Sans';
+    src: url('fonts/clearsans/clearsans.woff2') format('woff2'), url('fonts/clearsans/clearsans.woff') format('woff'), url('/fonts/clearsans/clearsans.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+.button {
+    cursor: pointer;
+}
+body .save.field {
+    border: 4px dotted #1c1c1c;
+    min-height: 300px;
+    margin-top: 50px;
+    border-radius: 20px;
+    display: table;
+    font-size: 18px;
+    color: #1c1e22;
+}
+body .save.field .text {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 20px;
+}
+.clear {
+    clear: both;
+}
+.field {
+    margin: 20px 0;
+}
+.sublinks a {
+    color: #888;
+    font-size: 14px;
+    text-decoration: underline;
+}
+.sublinks .inline:not(:first-child):before {
+        content: "•";
+    margin: 0 10px;
+}
+
+.padding-10 {
+    padding: 0 10px;
+}
+a {cursor: pointer;}
+* {position: relative;}
+
+.inline {display: inline-block;}
+aside {width: 200px; position: absolute; left: 0; height: 100%; background: #000; color: #fff;}
+aside .city {width: 100%; text-align: center; color: #fff; display: block;}
+aside #sidebg {width: 200px; position: absolute; top: 0; left: 0;}
+aside h4 {
+    font-family: "Sans";
+    font-size: 18px;
+    text-align: center;
+    font-weight: bolder;
+}
+hr.delimeter {margin: 9px 0; border-top: 1px solid rgba(255,255,255,0.35);}
+hr.field-del {margin: 30px 0; border-top: 1px solid #E1E1E1;}
+aside .side-menu {z-index: 10;}
+aside .side-menu a {display: block; width: auto; font-size: 16px; font-family: "Sans"; color: #fff; line-height: 32px;}
+aside .side-menu a:hover {background: rgba(255,255,255,0.15); text-decoration: none;}
+aside .side-menu a i {
+    margin: 0 6px 0 10px;
+}
+
+
+.white_document_blank {
+    background: #fff;
+    border: 1px solid #d1d1d1;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+body {padding-left: 200px; background: #f7f6f2; font-family: 'Sans'; font-size: 13px; }
+
+body hr {
+    border-top: 1px solid #434857;
+}
+body .row {margin: 0;}
+body .main-page {calc(100% - 0px) !important; padding: 0 10px;}
+
+.field-description .maxlength-feedback {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+}
+
+#login-form button, #login-form .b {
+    border-radius: 3px;
+    background: #165f9f;
+    color: #ffffff;
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+.plitka-form {
+    background-color: #ffffff;
+    margin: 0 auto 0;
+    padding: 20px 30px 30px 30px;
+    border-radius: 3px;
+    -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    display: block;
+    overflow: hidden;
+}
+.plitka-form input[type="text"], .form input[type="text"], .form .chosen-container-multi .chosen-choices {
+    width: 100%;
+    height: 36px;
+    display: block;
+    margin: 0 0 16px 0;
+    border-radius: 3px;
+    border: 1px solid #CCCCCC;
+    font-size: 18px;
+    padding: 8px 0 8px 10px;
+}
+.form .chosen-container {
+    margin: 0 0 16px 0;
+}
+.form .field {
+    margin: 0 0 16px 0;
+}
+
+.form .field {
+    margin: 0 0 16px 0;
+    background: #F1F1F1;
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+}
+
+.form .field input {margin: 0;}
+.plitka-form label:not(:first-child), .form label:not(:first-child) {
+    margin: 0 0 5px 0;
+}
+.settings-el {font-size: 18px; margin: 16px 0;}
+
+.form textarea {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    padding: 8px 0 8px 10px;
+    margin: 0 0 16px 0;
+}
+.blue-button {background: #1992d5; padding: 10px; color: #fff; border: none; min-width: 200px; border-radius: 3px;}
+.red-button {background: #d5197d; padding: 10px; color: #fff; border: none; min-width: 200px; border-radius: 3px; text-align: center;}
+.cancel-button { background: #d54819; padding: 10px; color: #fff; border: none; min-width: 200px; border-radius: 3px; text-align: center; }
+.confirm-button { background: #2fa030; padding: 10px; color: #fff; border: none; min-width: 200px; border-radius: 3px; text-align: center; }
+
+
+.plitka-form button {
+    border-radius: 3px;
+    background: #165f9f;
+    color: #ffffff;
+    padding: 12px 30px;
+    border: 0;
+    cursor: pointer;
+    height: 48px;
+}
+
+table .description {display: none;}
+table .show-desc {color: #1f7e9a; text-decoration: underline; cursor: pointer;}
+
+body table tr.green td,
+body table tr.green td a {
+    color: green;
+}
+body table tr.red td,
+body table tr.red td a {
+    color: red;
+}
+.select-time-job {
+    width: 100%;
+}
+
+.checkbox {
+    display: none;
+}
+.checkbox-custom {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+}
+.checkbox-custom,
+.label {
+    display: inline-block;
+    vertical-align: middle;
+    color: #000;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+.checkbox-custom:hover,
+.label:hover {
+    cursor: pointer;
+}
+.checkbox:checked + .checkbox-custom::before {
+    content: "";             
+    display: block;          
+    position: absolute;      
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+ 
+    background: #413548;
+    border-radius: 2px;
+}
+.checkvox:disabled:checked + .checkbox-custom::before {
+    background-color: #999;
+}
+.select-time input {
+    display: inline-block;
+    width: 100px;
+    padding: 2px;
+    float: left;
+}
+.spoiler > input {
+    display: none;
+}
+.spoiler #load-img {
+    display: none;
+    min-width: 800px !important;
+    width: 100% !important;
+    height: 100%;
+}
+/* .spoiler >  input:checked + .load-img {
+    display: block;
+    animation: showimgLoader 1s;
+    min-height: 100%;
+    width: 100%;
+} */
+.spoiler #load-img-label {
+    color: #1992d5;
+    cursor: pointer;
+}
+.spoiler > #load-img-label:hover {
+    text-decoration: underline;
+}
+
+
+.popup-task .form { position: absolute; top: 10px; width: 400px; opacity: 1; text-align: left;}
+.popup-task .aside {position: absolute; top: 10px; width: 460px; right: 10px; background: none;}
+.popup-task {display: none; width: 100%; height: 100%; position: fixed; background: rgba(255,255,255, 0.95); left: 0; top: 0; z-index: 999;}
+.popup-task .delete {display: none; float: right;}
+.project-name, .canban {margin-right: 20px;}
+.addtask {cursor: pointer;}
+
+.popup-project form { position: absolute; top: 40px; width: 600px; margin-left: -300px; left: 50%; opacity: 1;}
+.popup-project {display: none; width: 100%; height: 100%; position: fixed; background: rgba(255,255,255, 0.95); left: 0; top: 0; z-index: 999;}
+.popup-project .delete {display: none; float: right;}
+.project-name, .canban {margin-right: 20px;}
+.add-project {cursor: pointer;}
+
+
+@media only screen and (min-width: 0px) and (max-width: 762px) {
+    body #login-form {
+        margin-top: 10px;
+    }
+    .m10 {
+        margin: 10px 0;
+    }
+}
+.mdl-layout__content {
+    overflow-x: scroll;
+}

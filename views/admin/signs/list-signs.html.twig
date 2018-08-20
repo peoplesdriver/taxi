@@ -1,0 +1,43 @@
+{% extends '/admin/layout/layout.twig' %}
+
+{% block content %}
+    <table class="mdl-data-table mdl-table-bordered mdl-js-data-table mdl-shadow--2dp list-cars-table">
+    <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">Позывной</th>
+            <th>Imei</th>
+            <th>ИД водителя</th>
+            <th>ИД автомобиля</th>
+            <th>Код активации</th>
+            <th>Код региона кому принаджеит</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in signs %}
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><a href="{{ path_for('sign.showAdminSign', {'id': item.csign}) }}">{{ item.csign }}</a></td>
+            <td>{{ item.cimei }}</td>
+            <td>{{ item.driver.dlastname }} {{ item.driver.dfirstname }} {{ item.driver.dmidlename }}</td>
+            <td>
+                {% if item.ccar == -1 %} Пеший
+                {% elseif item.ccar == -2 %} Велокурьер
+                {% else %}{{ item.car.car_model }} {{ item.car.car_model_full }} {{ item.car.car_gn }}</td> {% endif %}
+            <td>{{ item.cactivation }}</td>
+            <td>{{ item.region.sec_reg_name }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="paginate-box">
+    <ul>
+        {% for item in 1..signs.lastPage %}
+            <li>
+                <a href="{{ path_for('sign.showAdminSigns') }}?page={{ item }}">{{ item }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{ path_for('sign.addAdminSign') }}">
+    Добавить
+</a>
+{% endblock %}

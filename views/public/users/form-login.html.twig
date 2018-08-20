@@ -1,0 +1,22 @@
+<form method="post" action="{{ path_for('user.login') }}">
+    <div>
+        <label>Логин</label>
+        <input type="text" placeholder="Логин" name="user[ulogin]">
+    </div>
+    <div>
+        <label>Пароль</label>
+        <input type="password" placeholder="Пароль" name="user[upasswd]">
+    </div>
+    <div>
+        <select name="city" >
+            <option value="aba19">Абакан</option>
+        </select>
+    </div>
+
+    
+    {#<div >#}
+        {#<input type="checkbox" name="user[check]" value="true">#}
+        {#<label>Remembe me</label>#}
+    {#</div>#}
+    <button type="submit" class="btn btn-primary">Отправить</button>
+</form>

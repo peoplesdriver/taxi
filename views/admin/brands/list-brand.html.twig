@@ -1,0 +1,90 @@
+
+{% extends '/admin/layout/layout.twig' %}
+
+{% block content %}
+
+<table class="mdl-data-table mdl-table-bordered mdl-js-data-table mdl-shadow--2dp list-cars-table">
+    <thead>
+        <tr>
+            <th>Бренд-группа</th>
+            <th>Регион</th>
+            <th>Филиал</th>
+            <th>Название</th>
+            <th>Километраж почасового заказа</th>
+            <th>Цена простоя за 1 минуту</th>
+            <th>Цена остоновки в пути</th>
+            <th>Наценка за табличку</th>
+            <th>Наценка за багаж</th>
+            <th>Наценка за собаку</th>
+            <th>Наценка за выбор машины</th>
+            <th>Множитель за сбербанк онлайн</th>
+            <th>Множитель за сбербанк онлайн</th>
+            <th>brand_near_podacha</th>
+            <th>brand_long_podacha</th>
+            <th>brand_rab_hour</th>
+            <th>brand_rab_level</th>
+            <th>Автоназначение водителя</th>
+            <th>Автоназначение предворительного заказа</th>
+            <th>Время до предворительного заказа</th>
+            <th>Время до предворительного заказа</th>
+            <th>Сограничение расстояния автораздачи</th>
+            <th>Минимальная цена</th>
+            <th>brand_lowradius</th>
+            <th>brand_nepodtv_razd</th>
+            <th>brand_nepodtv_count</th>
+            <th>Наценка до подъезда</th>
+            <th>Наценка до двери</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in brands %}
+        <tr>
+            <td>{{ item.brandGroup.brcl_name }}</td>
+            <td>{{ item.region.sec_reg_name }}</td>
+            <td>{{ item.filial.fil_name }}</td>
+            <td><a href="{{ path_for('brand.showAdminBrand', {'id': item.brand_id}) }}">{{ item.brand_name }}</a></td>
+            <td>{{ item.brand_chaaskm }}</td>
+            <td>{{ item.brand_prostoy_cost }}</td>
+            <td>{{ item.brand_ostanovka }}</td>
+            <td>{{ item.brand_zatablichku }}</td>
+            <td>{{ item.brand_zabagaj }}</td>
+            <td>{{ item.brand_zasobaku }}</td>
+            <td>{{ item.brand_zavibor }}</td>
+            <td>{{ item.brand_sberbank }}</td>
+            <td>{{ item.brand_card }}</td>
+            <td>{{ item.brand_near_podacha }}</td>
+            <td>{{ item.brand_long_podacha }}</td>
+            <td>{{ item.brand_rab_hour}}</td>
+            <td>{{ item.brand_rab_level }}</td>
+            <td>{{ item.brand_auto_driver }}</td>
+            <td>{{ item.brand_auto_predv }}</td>
+            <td>{{ item.brand_predv_time }}</td>
+            <td>{{ item.brand_arazd_cost }}</td>
+            <td>{{ item.brand_auto_length }}</td>
+            <td>{{ item.brand_lowcost}}</td>
+            <td>{{ item.brand_lowradius }}</td>
+            <td>{{ item.brand_nepodtv_razd }}</td>
+            <td>{{ item.brand_nepodtv_count }}</td>
+            <td>{{ item.brand_porch_delivery }}</td>
+            <td>{{ item.brand_door_delivery }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    <div>
+        <ul>
+            {% for item in 1..brands.lastPage %}
+                {% if item %}
+                    <li> <a href="{{ path_for('brand.showAdminBrands') }}?page={{ item }}">{{ item }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+
+
+<a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{ path_for('brand.addAdminBrand') }}">
+    Добавить
+</a>
+
+{% endblock %}

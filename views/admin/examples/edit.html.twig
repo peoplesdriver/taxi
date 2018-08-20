@@ -1,0 +1,119 @@
+{% extends '/admin/layout.html.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="inline project-name">Ресторан </h1>
+                <div class="sublinks inline text-right">
+                    <div class="inline"> <a href="/admin/restaurants">все рестораны</a> </div>
+                    <div class="inline"> <a href="/admin/restaurant/68/products">Блюда этого ресторана</a> </div>
+                    <div class="inline"> <a href="/admin/restaurant/68/promo">Акции</a> </div>
+                </div>
+                <hr class="aky">
+            </div>
+        </div>
+        <div class="white_document_blank">
+
+            <form
+                    class="restaurant_form add-rest"
+                    method="post"
+                    name="login_form"
+                    action="/api/restaurant/68"
+                    enctype="multipart/form-data"
+            >
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form">
+                            <div class="field">
+                                <label>Название ресторана</label>
+                                <input type="text" class="form-login" name="restaurant[title]" required placeholder="Название ресторана" value="Барин">
+                            </div>
+                            <div class="field">
+                                <label>Описание ресторана <span style="color: red;">поле активно только у модератора</span> </label>
+                                <textarea name="restaurant[description]" id="editor" rows="6">&lt;p&gt;Ресторан русской кухни.&amp;nbsp;&lt;/p&gt;
+										</textarea>
+                            </div>
+                            <div class="field">
+                                <label>Адрес ресторана</label>
+                                <input type="text" class="form-login restaurant-address" required name="restaurant[address]" placeholder="Адрес ресторана" value="Абакан, улица Пушкина, 23">
+                            </div>
+                            <hr class="field-del">
+                            <div class="field">
+                                <label>Мобильный телефон для сообщений о заказах</label>
+                                <input type="text" class="form-login" name="restaurant[sms_number]"  placeholder="-" value="123654789">
+                            </div>
+                            <div class="field">
+                                <label>Категория ресторана</label>
+                                <select name="categories[]" class="form-login selectize" data-placeholder="Выбрать категорию"  multiple="multiple">
+                                    <option></option>
+                                    <option value="1"
+                                    >Китайская кухня</option>
+                                    <option value="2"
+                                    >Японская кухня</option>
+                                    <option value="3"
+                                    >Европейская кухня</option>
+                                    <option value="4"
+                                    >Итальянская кухня</option>
+                                    <option value="5"
+                                            selected                                                                                                      >Русская кухня</option>
+                                    <option value="6"
+                                    >Универсальная кухня</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>Специализация ресторана</label>
+                                <select name="specializations[]" class="form-login selectize" data-placeholder="Выбрать специализацию"  multiple="multiple">
+                                    <option></option>
+                                    <option value="1"
+                                    >Пицца</option>
+                                    <option value="2"
+                                    >Суши</option>
+                                    <option value="3"
+                                    >Роллы</option>
+                                    <option value="4"
+                                    >Шашлык</option>
+                                    <option value="5"
+                                    >Фастфуд</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label>Минимальная сумма заказа</label>
+                                <input type="text" class="form-login" name="restaurant[min_order]"  placeholder="Минимальная сумма заказа" value="250">
+                            </div>
+                            <div class="field">
+                                <label>Максимальная сумма заказа</label>
+                                <input type="text" class="form-login" name="restaurant[max_order]"  placeholder="Максимальная сумма заказа" value="1500">
+                            </div>
+                            <div class="field">
+                                <label>Время реагирования на заказ (в минутах) <span style="color: red;">поле активно только у модератора</span></label>
+                                <input type="text" class="form-login" name="restaurant[order_expiration]" required placeholder="Время реагирования на заказ" value="15">
+                            </div>
+                            <div class="field">
+                                <label>Ориентировочное время доставки (в минутах)</label>
+                                <input type="text" class="form-login" name="restaurant[delivery_time]"  placeholder="Ориентировочное время в минутах" value="60 ">
+                            </div>
+                            <div class="field">
+                                <div>Статус публикации:  <span style="color: red">Ресторан не опубликован </span>  </div>
+                                <label for="publish-0">Опубликовать</label>
+                                <input type="checkbox" name="restaurant[published]" value="1" >
+                                <label style="color: #902b2b"><strong>Если ресторан не опубликовать, другие пользователи его не увидят, до тех пор,
+                                        пока вы его не опубликуете</strong></label>
+                            </div>
+                            <button class="blue-button inline" type="submit">Сохранить</button>
+                            <a class="inline" href="/api/delete/restaurant/68"><div class="red-button inline">Удалить ресторан</div> </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 form">
+                        <div class="field">
+                            <label>Название ресторана</label>
+                            <input type="text" class="form-login" name="restaurant[title]" required placeholder="Название ресторана" value="Барин">
+                        </div>
+                    </div>
+            </form>
+
+        </div>
+
+    </div>
+{% endblock %}

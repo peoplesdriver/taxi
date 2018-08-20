@@ -1,0 +1,49 @@
+
+{% extends '/admin/layout/layout.twig' %}
+
+{% block content %}
+
+<table class="mdl-data-table mdl-table-bordered mdl-js-data-table mdl-shadow--2dp list-cars-table">
+    <thedr>
+        <tr>
+            <th>login</th>
+            <th>passord</th>
+            <th>fulname</th>
+            <th>phone</th>
+            <th>email</th>
+            <th>role</th>
+            <th>sec_regs</th>
+        </tr>
+    </thedr>
+    <tbody>
+    {% for item in users %}
+    <tr>
+        <td><a href="{{path_for('user.showAdminUser', {'id': item.uid}) }}">{{ item.ulogin }}</a></td>
+        <td>{{ item.upasswd }}</td>
+        <td>{{ item.ufullname }}</td>
+        <td>{{ item.uphone }}</td>
+        <td>{{ item.umail }}</td>
+        <td>{{ item.urole }}</td>
+        <td> {% for reg in item.sec_regs %} {{ reg }} {% endfor %} </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div  class="paginate-box">
+    <ul>
+        {% for item in 1..userss.lastPage %}
+            {% if item %}
+                <li>
+                    <a href="{{ path_for('user.showAdminUsers') }}?page={{ item }}">{{ item }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+
+<a  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{ path_for('user.addAdminUser') }}">
+    Добавить
+</a>
+
+{% endblock %}

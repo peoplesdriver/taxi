@@ -1,0 +1,51 @@
+{% extends '/admin/layout.html.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="inline project-name">Список элементов </h1>
+                <div class="sublinks inline text-right">
+                    <div class="inline"> <a href="/admin/restaurants">Добавить новый элемент</a> </div>
+                </div>
+                <hr class="aky">
+            </div>
+        </div>
+        <div class="white_document_blank">
+            <div class="row">
+                    <div class="col-md-12">
+                        <div class="form">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Заголовок</th>
+                                    <th>Заголовок</th>
+                                    <th>Заголовок</th>
+                                    <th>Заголовок</th>
+                                    <th>Заголовок</th>
+                                    <th>Заголовок</th>
+                                    <th>Заголовок</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in 0..30 %}
+                                    <tr>
+                                        <td>ID {{ i }}</td>
+                                        <td>Имя</td>
+                                        <td>Фамилия</td>
+                                        <td>Отчество</td>
+                                        <td>Должность</td>
+                                        <td>Номер телефона</td>
+                                        <td><a href="">Редактировать</a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <hr class="field-del">
+
+                        </div>
+                    </div>
+        </div>
+
+    </div>
+{% endblock %}
